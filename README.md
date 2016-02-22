@@ -1,4 +1,4 @@
-# Project 6 - TheGra
+# Project 6 - TheGram
 
 TheGram is a photo sharing app using Parse as its backend.
 
