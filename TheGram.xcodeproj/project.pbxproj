@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		022ACBD01C77D4E400189D87 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022ACBCF1C77D4E400189D87 /* PhotoTableViewCell.swift */; };
+		022ACBD21C78EEC700189D87 /* UserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022ACBD11C78EEC700189D87 /* UserMedia.swift */; };
+		022ACBD61C790AD200189D87 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022ACBD51C790AD200189D87 /* CameraViewController.swift */; };
+		022ACBD81C7969FA00189D87 /* CaptionEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022ACBD71C7969FA00189D87 /* CaptionEditorViewController.swift */; };
 		02ACCD731C73EAF500C3EFBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ACCD721C73EAF500C3EFBD /* AppDelegate.swift */; };
-		02ACCD751C73EAF500C3EFBD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ACCD741C73EAF500C3EFBD /* ViewController.swift */; };
+		02ACCD751C73EAF500C3EFBD /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ACCD741C73EAF500C3EFBD /* TimelineViewController.swift */; };
 		02ACCD781C73EAF500C3EFBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ACCD761C73EAF500C3EFBD /* Main.storyboard */; };
 		02ACCD7A1C73EAF500C3EFBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02ACCD791C73EAF500C3EFBD /* Assets.xcassets */; };
 		02ACCD7D1C73EAF500C3EFBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ACCD7B1C73EAF500C3EFBD /* LaunchScreen.storyboard */; };
 		02ACCD881C73EAF600C3EFBD /* TheGramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ACCD871C73EAF600C3EFBD /* TheGramTests.swift */; };
 		02ACCD931C73EAF600C3EFBD /* TheGramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ACCD921C73EAF600C3EFBD /* TheGramUITests.swift */; };
+		02ACCDA11C73EFD000C3EFBD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ACCDA01C73EFD000C3EFBD /* LoginViewController.swift */; };
+		02BA9E241C7AB3250061DC9C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA9E231C7AB3250061DC9C /* ProfileViewController.swift */; };
+		02BA9E261C7AC5100061DC9C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA9E251C7AC5100061DC9C /* EditProfileViewController.swift */; };
+		02BA9E281C7AC5D50061DC9C /* profileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA9E271C7AC5D50061DC9C /* profileImageViewController.swift */; };
+		E9F47B4CF8BDF1E5762BFF8E /* Pods_TheGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5D32495C27F94371DC4C77 /* Pods_TheGram.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +43,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		022ACBCF1C77D4E400189D87 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		022ACBD11C78EEC700189D87 /* UserMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMedia.swift; sourceTree = "<group>"; };
+		022ACBD51C790AD200189D87 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		022ACBD71C7969FA00189D87 /* CaptionEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionEditorViewController.swift; sourceTree = "<group>"; };
 		02ACCD6F1C73EAF500C3EFBD /* TheGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ACCD721C73EAF500C3EFBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		02ACCD741C73EAF500C3EFBD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		02ACCD741C73EAF500C3EFBD /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		02ACCD771C73EAF500C3EFBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02ACCD791C73EAF500C3EFBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02ACCD7C1C73EAF500C3EFBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +60,13 @@
 		02ACCD8E1C73EAF600C3EFBD /* TheGramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheGramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ACCD921C73EAF600C3EFBD /* TheGramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheGramUITests.swift; sourceTree = "<group>"; };
 		02ACCD941C73EAF600C3EFBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02ACCDA01C73EFD000C3EFBD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		02BA9E231C7AB3250061DC9C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		02BA9E251C7AC5100061DC9C /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		02BA9E271C7AC5D50061DC9C /* profileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileImageViewController.swift; sourceTree = "<group>"; };
+		0B609838D19A25AD52B72D1D /* Pods-TheGram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGram.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheGram/Pods-TheGram.release.xcconfig"; sourceTree = "<group>"; };
+		3DE556ECA75675D9D828C16F /* Pods-TheGram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheGram/Pods-TheGram.debug.xcconfig"; sourceTree = "<group>"; };
+		BA5D32495C27F94371DC4C77 /* Pods_TheGram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9F47B4CF8BDF1E5762BFF8E /* Pods_TheGram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +95,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		022ACBD31C78EED000189D87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				022ACBD11C78EEC700189D87 /* UserMedia.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		022ACBD41C78EEE600189D87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02ACCD741C73EAF500C3EFBD /* TimelineViewController.swift */,
+				02ACCDA01C73EFD000C3EFBD /* LoginViewController.swift */,
+				022ACBCF1C77D4E400189D87 /* PhotoTableViewCell.swift */,
+				022ACBD51C790AD200189D87 /* CameraViewController.swift */,
+				022ACBD71C7969FA00189D87 /* CaptionEditorViewController.swift */,
+				02BA9E231C7AB3250061DC9C /* ProfileViewController.swift */,
+				02BA9E251C7AC5100061DC9C /* EditProfileViewController.swift */,
+				02BA9E271C7AC5D50061DC9C /* profileImageViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		02ACCD661C73EAF500C3EFBD = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +125,8 @@
 				02ACCD861C73EAF600C3EFBD /* TheGramTests */,
 				02ACCD911C73EAF600C3EFBD /* TheGramUITests */,
 				02ACCD701C73EAF500C3EFBD /* Products */,
+				9C17FFD8E2A64E718B61EE50 /* Pods */,
+				1DA1F51D4DA65AFBEB6197ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,11 +144,12 @@
 			isa = PBXGroup;
 			children = (
 				02ACCD721C73EAF500C3EFBD /* AppDelegate.swift */,
-				02ACCD741C73EAF500C3EFBD /* ViewController.swift */,
 				02ACCD761C73EAF500C3EFBD /* Main.storyboard */,
 				02ACCD791C73EAF500C3EFBD /* Assets.xcassets */,
 				02ACCD7B1C73EAF500C3EFBD /* LaunchScreen.storyboard */,
 				02ACCD7E1C73EAF500C3EFBD /* Info.plist */,
+				022ACBD41C78EEE600189D87 /* Views */,
+				022ACBD31C78EED000189D87 /* Models */,
 			);
 			path = TheGram;
 			sourceTree = "<group>";
@@ -125,6 +172,23 @@
 			path = TheGramUITests;
 			sourceTree = "<group>";
 		};
+		1DA1F51D4DA65AFBEB6197ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA5D32495C27F94371DC4C77 /* Pods_TheGram.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C17FFD8E2A64E718B61EE50 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3DE556ECA75675D9D828C16F /* Pods-TheGram.debug.xcconfig */,
+				0B609838D19A25AD52B72D1D /* Pods-TheGram.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02ACCD971C73EAF600C3EFBD /* Build configuration list for PBXNativeTarget "TheGram" */;
 			buildPhases = (
+				8F2B7C55943CF965C6C7488D /* Check Pods Manifest.lock */,
 				02ACCD6B1C73EAF500C3EFBD /* Sources */,
 				02ACCD6C1C73EAF500C3EFBD /* Frameworks */,
 				02ACCD6D1C73EAF500C3EFBD /* Resources */,
+				F8E5C68EEA8B542A3080D917 /* Embed Pods Frameworks */,
+				28D02A4B3C13CFC207F77132 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,13 +321,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		28D02A4B3C13CFC207F77132 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheGram/Pods-TheGram-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F2B7C55943CF965C6C7488D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F8E5C68EEA8B542A3080D917 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheGram/Pods-TheGram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		02ACCD6B1C73EAF500C3EFBD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02ACCD751C73EAF500C3EFBD /* ViewController.swift in Sources */,
+				022ACBD01C77D4E400189D87 /* PhotoTableViewCell.swift in Sources */,
+				02ACCDA11C73EFD000C3EFBD /* LoginViewController.swift in Sources */,
+				02ACCD751C73EAF500C3EFBD /* TimelineViewController.swift in Sources */,
+				022ACBD81C7969FA00189D87 /* CaptionEditorViewController.swift in Sources */,
+				022ACBD21C78EEC700189D87 /* UserMedia.swift in Sources */,
 				02ACCD731C73EAF500C3EFBD /* AppDelegate.swift in Sources */,
+				02BA9E241C7AB3250061DC9C /* ProfileViewController.swift in Sources */,
+				022ACBD61C790AD200189D87 /* CameraViewController.swift in Sources */,
+				02BA9E281C7AC5D50061DC9C /* profileImageViewController.swift in Sources */,
+				02BA9E261C7AC5100061DC9C /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +521,7 @@
 		};
 		02ACCD981C73EAF600C3EFBD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DE556ECA75675D9D828C16F /* Pods-TheGram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TheGram/Info.plist;
@@ -409,6 +533,7 @@
 		};
 		02ACCD991C73EAF600C3EFBD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B609838D19A25AD52B72D1D /* Pods-TheGram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TheGram/Info.plist;
@@ -485,6 +610,7 @@
 				02ACCD991C73EAF600C3EFBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02ACCD9A1C73EAF600C3EFBD /* Build configuration list for PBXNativeTarget "TheGramTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +619,7 @@
 				02ACCD9C1C73EAF600C3EFBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02ACCD9D1C73EAF600C3EFBD /* Build configuration list for PBXNativeTarget "TheGramUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +628,7 @@
 				02ACCD9F1C73EAF600C3EFBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

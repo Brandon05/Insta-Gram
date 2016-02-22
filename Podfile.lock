@@ -1,0 +1,19 @@
+PODS:
+  - Bolts/Tasks (1.6.0)
+  - imglyKit (2.4.1)
+  - Parse (1.12.0):
+    - Bolts/Tasks (~> 1.5)
+  - TTTAttributedLabel (1.13.4)
+
+DEPENDENCIES:
+  - imglyKit
+  - Parse
+  - TTTAttributedLabel
+
+SPEC CHECKSUMS:
+  Bolts: f52a250053bb517ca874523c3913776359ab3def
+  imglyKit: f30ce863024e3d711520e422197711dc42f8c1e3
+  Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
+  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
+
+COCOAPODS: 0.39.0

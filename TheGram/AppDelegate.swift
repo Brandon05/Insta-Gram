@@ -7,15 +7,38 @@
 //
 
 import UIKit
+import Parse
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var storyboard = UIStoryboard(name: "Main", bundle: nil)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // setup parse keys
+        Parse.setApplicationId("TheGram", clientKey: "djvjfvlsirutnvjskvjfdnvkdfvngjdsldgjv")
+        
+        // check if user is logged in.
+        if PFUser.currentUser() != nil {
+            // if there is a logged in user then load the home view controller
+            //let vc = storyboard.instantiateInitialViewController()
+            let vc = storyboard.instantiateViewControllerWithIdentifier("TabbarController") as! UITabBarController
+            window?.rootViewController = vc
+            //vc.loadView()
+        }
+        
+        //Parse Initializer
+        Parse.initializeWithConfiguration(
+            ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "TheGram"
+                configuration.clientKey = "djvjfvlsirutnvjskvjfdnvkdfvngjdsldgjv"
+                configuration.server = "https://infinite-brushlands-64644.herokuapp.com/parse"
+            })
+        )
         return true
     }
 
