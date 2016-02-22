@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ChameleonFramework
 
 class ProfileViewController: UIViewController {
 
@@ -21,6 +22,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(gradientStyle: UIGradientStyle.TopToBottom, withFrame:self.view.bounds, andColors:[UIColor.flatRedColor(), UIColor.flatWhiteColor()])
         
         
         profileImage.clipsToBounds = true

@@ -102,7 +102,7 @@ class CaptionEditorViewController: UIViewController, UITextViewDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
             }
         })
-        user!
+        
         performSegueWithIdentifier("postPressed", sender: captionTextView)
     }
     

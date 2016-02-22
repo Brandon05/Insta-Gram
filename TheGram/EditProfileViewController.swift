@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ChameleonFramework
 
 class EditProfileViewController: UIViewController, UITextViewDelegate {
 
@@ -23,6 +24,8 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(gradientStyle: UIGradientStyle.TopToBottom, withFrame:self.view.bounds, andColors:[UIColor.flatGrayColorDark(), UIColor.flatWhiteColor()])
         
         editBioTextView.delegate = self
         editAgeTextView.delegate = self
