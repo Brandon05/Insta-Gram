@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ChameleonFramework
 
 class LoginViewController: UIViewController {
     
@@ -18,6 +19,8 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(gradientStyle: UIGradientStyle.TopToBottom, withFrame:self.view.bounds, andColors:[UIColor.flatBlueColor(), UIColor.flatWhiteColor()])
 
         // Do any additional setup after loading the view.
     }

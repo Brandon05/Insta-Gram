@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ProfileViewController: UIViewController {
 
@@ -31,6 +32,36 @@ class ProfileViewController: UIViewController {
         }
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        let user = PFUser.currentUser()
+        
+        if (user?.username != nil) {
+            usernameLabel.text = user!.username
+        }
+        if (user?["hometown"] != nil) {
+            hometownLabel.text = user!["location"] as? String
+        }
+        if (user?["age"] != nil) {
+            ageLabel.text = user!["age"] as? String
+        }
+        if (user?["bio"] != nil) {
+            bioLabel.text = user!["bio"] as? String
+        }
+        if (user?["profileImage"] != nil) {
+            let userImageFile = user?["profileImage"] as! PFFile
+            userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                else {
+                    let image = UIImage(data: imageData!)
+                    self.profileImage.image = image
+                }
+            })
+        }
+
     }
 
     override func didReceiveMemoryWarning() {

@@ -136,7 +136,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         if (userMedia?[indexPath.row]["profileImage"] != nil) {
-            let userPicture = userMedia?[indexPath.row]["profileImage"] as! PFFile
+            let userPicture = userMedia![indexPath.row]["profileImage"] as! PFFile
             userPicture.getDataInBackgroundWithBlock({ (image: NSData?, error: NSError?) -> Void in
                 if let error = error {
                     print("error")
@@ -258,8 +258,38 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         fetchData()
         
         delay(1.5, closure: {
+            self.timeline.reloadData()
             self.refreshControl.endRefreshing()
         })
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let profilePic = sender as? UIButton {
+            if let superview = profilePic.superview {
+                if let cell = superview.superview as? PhotoTableViewCell {
+                    let indexPath = timeline.indexPathForCell(cell)
+                    
+                    let userPicture = userMedia?[indexPath!.row]["media"] as! PFFile
+                    userPicture.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                        if let error = error {
+                            print("error")
+                            print(error.localizedDescription)
+                        }
+                    
+
+                    
+                    let detailView = segue.destinationViewController as! DetailImageViewController
+                    let image = UIImage(data: imageData!)
+                    detailView.userImage.clipsToBounds = true
+                    detailView.userImage.image = image
+                        
+                    })
+                }
+            }
+        }
+
+        
     }
 
 

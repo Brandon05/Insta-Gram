@@ -22,6 +22,7 @@
 		02BA9E241C7AB3250061DC9C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA9E231C7AB3250061DC9C /* ProfileViewController.swift */; };
 		02BA9E261C7AC5100061DC9C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA9E251C7AC5100061DC9C /* EditProfileViewController.swift */; };
 		02BA9E281C7AC5D50061DC9C /* profileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA9E271C7AC5D50061DC9C /* profileImageViewController.swift */; };
+		02BA9E2A1C7AF84A0061DC9C /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA9E291C7AF84A0061DC9C /* DetailImageViewController.swift */; };
 		E9F47B4CF8BDF1E5762BFF8E /* Pods_TheGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5D32495C27F94371DC4C77 /* Pods_TheGram.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		02BA9E231C7AB3250061DC9C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		02BA9E251C7AC5100061DC9C /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		02BA9E271C7AC5D50061DC9C /* profileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileImageViewController.swift; sourceTree = "<group>"; };
+		02BA9E291C7AF84A0061DC9C /* DetailImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
 		0B609838D19A25AD52B72D1D /* Pods-TheGram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGram.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheGram/Pods-TheGram.release.xcconfig"; sourceTree = "<group>"; };
 		3DE556ECA75675D9D828C16F /* Pods-TheGram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheGram/Pods-TheGram.debug.xcconfig"; sourceTree = "<group>"; };
 		BA5D32495C27F94371DC4C77 /* Pods_TheGram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 				02BA9E231C7AB3250061DC9C /* ProfileViewController.swift */,
 				02BA9E251C7AC5100061DC9C /* EditProfileViewController.swift */,
 				02BA9E271C7AC5D50061DC9C /* profileImageViewController.swift */,
+				02BA9E291C7AF84A0061DC9C /* DetailImageViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				02ACCD731C73EAF500C3EFBD /* AppDelegate.swift in Sources */,
 				02BA9E241C7AB3250061DC9C /* ProfileViewController.swift in Sources */,
 				022ACBD61C790AD200189D87 /* CameraViewController.swift in Sources */,
+				02BA9E2A1C7AF84A0061DC9C /* DetailImageViewController.swift in Sources */,
 				02BA9E281C7AC5D50061DC9C /* profileImageViewController.swift in Sources */,
 				02BA9E261C7AC5100061DC9C /* EditProfileViewController.swift in Sources */,
 			);

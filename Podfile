@@ -7,6 +7,7 @@ target 'TheGram' do
 pod 'Parse'
 pod 'imglyKit'
 pod 'TTTAttributedLabel'
+pod 'ChameleonFramework/Swift'
 end
 
 target 'TheGramTests' do
