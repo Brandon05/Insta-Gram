@@ -11,7 +11,6 @@ pod 'ChameleonFramework/Swift'
 end
 
 target 'TheGramTests' do
-
 end
 
 target 'TheGramUITests' do
