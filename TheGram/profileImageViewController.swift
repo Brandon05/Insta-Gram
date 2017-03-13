@@ -25,8 +25,8 @@ class profileImageViewController: IMGLYCameraViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func CompletionBlock(result: IMGLYEditorResult, profileImage: UIImage?) {
-        if let profileimage = profileImage where result == .Done {
+    func CompletionBlock(_ result: IMGLYEditorResult, profileImage: UIImage?) {
+        if let profileimage = profileImage, result == .done {
     
             self.profileImage = profileimage
             if self.profileImage != nil {
@@ -35,28 +35,28 @@ class profileImageViewController: IMGLYCameraViewController {
             //UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
             
         }
-        dismissViewControllerAnimated(true, completion: nil)
-        if (NSThread.isMainThread()) {
+        dismiss(animated: true, completion: nil)
+        if (Thread.isMainThread) {
             print("yes")
         }
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             [unowned self] in
-            self.performSegueWithIdentifier("unwindToEditProfile", sender: self)
+            self.performSegue(withIdentifier: "unwindToEditProfile", sender: self)
         }
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let editProfileViewController = segue.destinationViewController as! EditProfileViewController
+        let editProfileViewController = segue.destination as! EditProfileViewController
         editProfileViewController.userProfileImage = profileImage!
         
     }
     
-    internal override func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    internal override func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
-        self.dismissViewControllerAnimated(true, completion: {
+        self.dismiss(animated: true, completion: {
             if let completionBlock = self.completionBlock {
                 completionBlock(image, nil)
             } else {
@@ -67,7 +67,7 @@ class profileImageViewController: IMGLYCameraViewController {
         })
     }
     
-    private func showEditorNavigationControllerWithImage(image: UIImage) {
+    fileprivate func showEditorNavigationControllerWithImage(_ image: UIImage) {
         let editorViewController = IMGLYMainEditorViewController()
         editorViewController.highResolutionImage = image
         if let cameraController = cameraController {
@@ -77,13 +77,13 @@ class profileImageViewController: IMGLYCameraViewController {
         editorViewController.completionBlock = CompletionBlock
         
         let navigationController = IMGLYNavigationController(rootViewController: editorViewController)
-        navigationController.navigationBar.barStyle = .Black
-        navigationController.navigationBar.translucent = false
-        navigationController.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.whiteColor() ]
+        navigationController.navigationBar.barStyle = .black
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white ]
         //navigationController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "tappedDone")
         print("works")
         //performSegueWithIdentifier("CaptionEditorSegue", sender: self)
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
     }
 
     

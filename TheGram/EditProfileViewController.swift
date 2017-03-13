@@ -25,7 +25,7 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(gradientStyle: UIGradientStyle.TopToBottom, withFrame:self.view.bounds, andColors:[UIColor.flatGrayColorDark(), UIColor.flatWhiteColor()])
+        self.view.backgroundColor = UIColor(gradientStyle: UIGradientStyle.topToBottom, withFrame:self.view.bounds, andColors:[UIColor.flatGrayColorDark(), UIColor.flatWhite()])
         
         editBioTextView.delegate = self
         editAgeTextView.delegate = self
@@ -36,27 +36,27 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
         agePlaceholderLabel.text = ""
         bioPlaceholderLabel.text = "Enter Caption :)"
         hometownPlaceholderLabel.text = ""
-        bioPlaceholderLabel.font = UIFont.italicSystemFontOfSize(editBioTextView.font!.pointSize)
-        agePlaceholderLabel.font = UIFont.italicSystemFontOfSize(editAgeTextView.font!.pointSize)
-        hometownPlaceholderLabel.font = UIFont.italicSystemFontOfSize(editHometownTextView.font!.pointSize)
+        bioPlaceholderLabel.font = UIFont.italicSystemFont(ofSize: editBioTextView.font!.pointSize)
+        agePlaceholderLabel.font = UIFont.italicSystemFont(ofSize: editAgeTextView.font!.pointSize)
+        hometownPlaceholderLabel.font = UIFont.italicSystemFont(ofSize: editHometownTextView.font!.pointSize)
         bioPlaceholderLabel.sizeToFit()
         agePlaceholderLabel.sizeToFit()
         hometownPlaceholderLabel.sizeToFit()
         editBioTextView.addSubview(bioPlaceholderLabel)
         editAgeTextView.addSubview(agePlaceholderLabel)
         editHometownTextView.addSubview(hometownPlaceholderLabel)
-        bioPlaceholderLabel.frame.origin = CGPointMake(5, editBioTextView.font!.pointSize / 2)
-        agePlaceholderLabel.frame.origin = CGPointMake(5, editAgeTextView.font!.pointSize / 2)
-        bioPlaceholderLabel.frame.origin = CGPointMake(5, editHometownTextView.font!.pointSize / 2)
+        bioPlaceholderLabel.frame.origin = CGPoint(x: 5, y: editBioTextView.font!.pointSize / 2)
+        agePlaceholderLabel.frame.origin = CGPoint(x: 5, y: editAgeTextView.font!.pointSize / 2)
+        bioPlaceholderLabel.frame.origin = CGPoint(x: 5, y: editHometownTextView.font!.pointSize / 2)
         hometownPlaceholderLabel.textColor = UIColor(white: 0, alpha: 0.3)
-        bioPlaceholderLabel.hidden = !editBioTextView.text.isEmpty
-        agePlaceholderLabel.hidden = !editAgeTextView.text.isEmpty
-        hometownPlaceholderLabel.hidden = !editHometownTextView.text.isEmpty
+        bioPlaceholderLabel.isHidden = !editBioTextView.text.isEmpty
+        agePlaceholderLabel.isHidden = !editAgeTextView.text.isEmpty
+        hometownPlaceholderLabel.isHidden = !editHometownTextView.text.isEmpty
         
-        let user = PFUser.currentUser()
+        let user = PFUser.current()
         if (user?["profileImage"] != nil) {
             let userImageFile = user?["profileImage"] as! PFFile
-            userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+            userImageFile.getDataInBackground(block: { (imageData: Data?, error: NSError?) -> Void in
                 if let error = error {
                     print(error.localizedDescription)
                 }
@@ -70,12 +70,12 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
 
         // Do any additional setup after loading the view.
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if userProfileImage != nil {
             self.profileImage.image = userProfileImage
         }
         
-        let user = PFUser.currentUser()
+        let user = PFUser.current()
         
         if (user?["hometown"] != nil) {
             editHometownTextView.text = user!["hometown"] as? String
@@ -88,7 +88,7 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
         }
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 
@@ -103,28 +103,28 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
 //        hometownPlaceholderLabel.hidden = !editHometownTextView.text.isEmpty
 //    }
     
-    func textViewDidChange(editBioTextView: UITextView) {
-        bioPlaceholderLabel.hidden = !editBioTextView.text.isEmpty
+    func textViewDidChange(_ editBioTextView: UITextView) {
+        bioPlaceholderLabel.isHidden = !editBioTextView.text.isEmpty
     }
     
-    func resize(userImage: UIImage, newSize: CGSize) -> UIImage {
-        let resizeImageView = UIImageView(frame: CGRectMake(8, 38, newSize.width, newSize.height))
-        resizeImageView.contentMode = UIViewContentMode.ScaleAspectFill
+    func resize(_ userImage: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRect(x: 8, y: 38, width: newSize.width, height: newSize.height))
+        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
         resizeImageView.image = userImage
         
         UIGraphicsBeginImageContext(resizeImageView.frame.size)
-        resizeImageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         //editedImage.image = newImage
-        return newImage
+        return newImage!
     }
 
     
-    @IBAction func onDone(sender: AnyObject) {
+    @IBAction func onDone(_ sender: AnyObject) {
         
-        let user = PFUser.currentUser()
-        self.profileImage.image = resize(userProfileImage, newSize: CGSizeMake(100, 100))
+        let user = PFUser.current()
+        self.profileImage.image = resize(userProfileImage, newSize: CGSize(width: 100, height: 100))
         if (profileImage.image != nil) {
             user!["profileImage"] = getPFFileFromImage(profileImage.image!)
         }
@@ -138,13 +138,13 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
             user!["bio"] = editBioTextView.text!
         }
         
-        user?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+        user?.saveInBackground(block: { (success: Bool, error: NSError?) -> Void in
             if let error = error {
                 print("Update user failed")
                 print(error.localizedDescription)
             } else {
                 print("Updated user successfully")
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
              })
 
@@ -158,10 +158,10 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
 //                //NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
 //            }
 //        })
-        performSegueWithIdentifier("unwindToProfile", sender: self)
+        performSegue(withIdentifier: "unwindToProfile", sender: self)
     }
     
-    func getPFFileFromImage(image: UIImage?) -> PFFile? {
+    func getPFFileFromImage(_ image: UIImage?) -> PFFile? {
         // check if image is not nil
         if let image = image {
             // get image data and check if that is not nil
@@ -172,19 +172,19 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
         return nil
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "unwindToProfile") {
-        let profileViewController = segue.destinationViewController as! ProfileViewController
+        let profileViewController = segue.destination as! ProfileViewController
         profileViewController.profileImage.image = profileImage.image
         profileViewController.bioLabel.text = editBioTextView.text
         profileViewController.ageLabel.text = editAgeTextView.text
         profileViewController.hometownLabel.text = editHometownTextView.text
         } else {
-            let ProfileImageViewController = segue.destinationViewController as! profileImageViewController
+            let ProfileImageViewController = segue.destination as! profileImageViewController
         }
     }
     
-    @IBAction func unwindToEditProfile(segue: UIStoryboardSegue) {
+    @IBAction func unwindToEditProfile(_ segue: UIStoryboardSegue) {
     }
     
 

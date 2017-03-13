@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(gradientStyle: UIGradientStyle.TopToBottom, withFrame:self.view.bounds, andColors:[UIColor.flatBlueColor(), UIColor.flatWhiteColor()])
+        self.view.backgroundColor = UIColor(gradientStyle: UIGradientStyle.topToBottom, withFrame:self.view.bounds, andColors:[UIColor.flatBlue(), UIColor.flatWhite()])
 
         // Do any additional setup after loading the view.
     }
@@ -31,12 +31,12 @@ class LoginViewController: UIViewController {
     }
     
 
-    @IBAction func signInTouched(sender: AnyObject) {
+    @IBAction func signInTouched(_ sender: AnyObject) {
 //        if usernameTextField.text && != nil {
-        PFUser.logInWithUsernameInBackground(usernameTextField.text!, password: passwordTextField.text!) { (user: PFUser?, error: NSError?) -> Void in
+        PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!) { (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 print("Successfully Logged In")
-                self.performSegueWithIdentifier("loginSegue", sender: nil)
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
         }
 //        } else {
@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
     }
    
 
-    @IBAction func signUpTouched(sender: AnyObject) {
+    @IBAction func signUpTouched(_ sender: AnyObject) {
         
         if usernameTextField.text != "" && passwordTextField.text != "" {
         let newUser = PFUser()
@@ -54,10 +54,10 @@ class LoginViewController: UIViewController {
         newUser.password = passwordTextField.text
         
             
-        newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+        newUser.signUpInBackground { (success: Bool, error: NSError?) -> Void in
             if success {
                print("createdUser")
-               self.performSegueWithIdentifier("loginSegue", sender: nil)
+               self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
                print(error?.localizedDescription)
                 if error?.code == 202 {

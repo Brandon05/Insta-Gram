@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(gradientStyle: UIGradientStyle.TopToBottom, withFrame:self.view.bounds, andColors:[UIColor.flatRedColor(), UIColor.flatWhiteColor()])
+        self.view.backgroundColor = UIColor(gradientStyle: UIGradientStyle.topToBottom, withFrame:self.view.bounds, andColors:[UIColor.flatRed(), UIColor.flatWhite()])
         
         
         profileImage.clipsToBounds = true
@@ -37,8 +37,8 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        let user = PFUser.currentUser()
+    override func viewDidAppear(_ animated: Bool) {
+        let user = PFUser.current()
         
         if (user?.username != nil) {
             usernameLabel.text = user!.username
@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController {
         }
         if (user?["profileImage"] != nil) {
             let userImageFile = user?["profileImage"] as! PFFile
-            userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+            userImageFile.getDataInBackground(block: { (imageData: Data?, error: NSError?) -> Void in
                 if let error = error {
                     print(error.localizedDescription)
                 }
@@ -72,11 +72,11 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
-    @IBAction func unwindToProfile(segue: UIStoryboardSegue) {
+    @IBAction func unwindToProfile(_ segue: UIStoryboardSegue) {
     }
     
     

@@ -8,6 +8,19 @@
 
 import UIKit
 import imglyKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 class CameraViewController: IMGLYCameraViewController {
     
@@ -37,7 +50,7 @@ class CameraViewController: IMGLYCameraViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setTabBarVisible(visible:Bool, animated:Bool) {
+    func setTabBarVisible(_ visible:Bool, animated:Bool) {
         
         //* This cannot be called before viewDidLayoutSubviews(), because the frame is not set before this time
         
@@ -50,41 +63,41 @@ class CameraViewController: IMGLYCameraViewController {
         let offsetY = (visible ? -height! : height)
         
         // zero duration means no animation
-        let duration:NSTimeInterval = (animated ? 0.3 : 0.0)
+        let duration:TimeInterval = (animated ? 0.3 : 0.0)
         
         //  animate the tabBar
         if frame != nil {
-            UIView.animateWithDuration(duration) {
-                self.tabBarController?.tabBar.frame = CGRectOffset(frame!, 0, offsetY!)
+            UIView.animate(withDuration: duration, animations: {
+                self.tabBarController?.tabBar.frame = frame!.offsetBy(dx: 0, dy: offsetY!)
                 return
-            }
+            }) 
         }
     }
     
     func tabBarIsVisible() ->Bool {
-        return self.tabBarController?.tabBar.frame.origin.y < CGRectGetMaxY(self.view.frame)
+        return self.tabBarController?.tabBar.frame.origin.y < self.view.frame.maxY
     }
     
-    func editorCompletionBlock(result: IMGLYEditorResult, image: UIImage?) {
-        if let image = image where result == .Done {
+    func editorCompletionBlock(_ result: IMGLYEditorResult, image: UIImage?) {
+        if let image = image, result == .done {
             
             self.editedImage = image
             //UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
             
         }
-        dismissViewControllerAnimated(true, completion: nil)
-        performSegueWithIdentifier("CaptionEditorSegue", sender: self)
+        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "CaptionEditorSegue", sender: self)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let captionEditorViewController = segue.destinationViewController as! CaptionEditorViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let captionEditorViewController = segue.destination as! CaptionEditorViewController
         captionEditorViewController.userImage = editedImage!
     }
     
-    internal override func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    internal override func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
-        self.dismissViewControllerAnimated(true, completion: {
+        self.dismiss(animated: true, completion: {
             if let completionBlock = self.completionBlock {
                 completionBlock(image, nil)
             } else {
@@ -95,7 +108,7 @@ class CameraViewController: IMGLYCameraViewController {
         })
     }
     
-    private func showEditorNavigationControllerWithImage(image: UIImage) {
+    fileprivate func showEditorNavigationControllerWithImage(_ image: UIImage) {
         let editorViewController = IMGLYMainEditorViewController()
         editorViewController.highResolutionImage = image
         if let cameraController = cameraController {
@@ -105,13 +118,13 @@ class CameraViewController: IMGLYCameraViewController {
         editorViewController.completionBlock = editorCompletionBlock
         
         let navigationController = IMGLYNavigationController(rootViewController: editorViewController)
-        navigationController.navigationBar.barStyle = .Black
-        navigationController.navigationBar.translucent = false
-        navigationController.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.whiteColor() ]
+        navigationController.navigationBar.barStyle = .black
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white ]
         //navigationController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "tappedDone")
         print("works")
         //performSegueWithIdentifier("CaptionEditorSegue", sender: self)
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
     }
     
 //    private func configureNavigationItems() {

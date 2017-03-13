@@ -23,25 +23,25 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         timeline.dataSource = self
         timeline.rowHeight = UITableViewAutomaticDimension
         timeline.estimatedRowHeight = 120
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadFeed:",name:"load", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TimelineViewController.loadFeed(_:)),name:NSNotification.Name(rawValue: "load"), object: nil)
         
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
-        timeline.insertSubview(refreshControl, atIndex: 0)
-        refreshControl.backgroundColor = UIColor.blueColor()
-        refreshControl.tintColor = UIColor.whiteColor()
+        refreshControl.addTarget(self, action: #selector(TimelineViewController.onRefresh), for: UIControlEvents.valueChanged)
+        timeline.insertSubview(refreshControl, at: 0)
+        refreshControl.backgroundColor = UIColor.blue
+        refreshControl.tintColor = UIColor.white
         
         
         fetchData()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         fetchData()
         self.timeline.reloadData()
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 
@@ -50,20 +50,20 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    func loadFeed(notification: NSNotification) {
+    func loadFeed(_ notification: Notification) {
         fetchData()
         self.timeline.reloadData()
     }
 
-    @IBAction func onSignOut(sender: AnyObject) {
+    @IBAction func onSignOut(_ sender: AnyObject) {
         PFUser.logOut()
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if userMedia != nil {
           return userMedia!.count
         } else {
@@ -71,14 +71,14 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PhotoTableViewCell") as! PhotoTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoTableViewCell") as! PhotoTableViewCell
         
 
         
         if (userMedia?[indexPath.row]["media"] != nil) {
             let userPicture = userMedia?[indexPath.row]["media"] as! PFFile
-            userPicture.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+            userPicture.getDataInBackground(block: { (imageData: Data?, error: NSError?) -> Void in
                 if let error = error {
                     print("error")
                     print(error.localizedDescription)
@@ -91,13 +91,13 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             })
         }
-        if (userMedia?[indexPath.row]["author"].username != nil) {
+        if ((userMedia?[indexPath.row]["author"] as AnyObject).username != nil) {
             
-            cell.usernameButton.setTitle(userMedia![indexPath.row]["author"].username, forState: UIControlState.Normal) 
+            cell.usernameButton.setTitle(userMedia![indexPath.row]["author"].username, for: UIControlState()) 
         }
         if (userMedia?[indexPath.row].createdAt != nil) {
             var createdAt: String?
-            let elapsedTime = NSDate().timeIntervalSinceDate((userMedia?[indexPath.row].createdAt)!)
+            let elapsedTime = Date().timeIntervalSince((userMedia?[indexPath.row].createdAt)!)
             let duration = Int(elapsedTime)
             
             if duration / 86400 >= 1 {
@@ -117,19 +117,19 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
             cell.timeStamp.text = createdAt
         }
         
-        if (userMedia?[indexPath.row]["caption"] != nil && userMedia?[indexPath.row]["author"].username != nil) {
-            let username = userMedia![indexPath.row]["author"].username!
+        if (userMedia?[indexPath.row]["caption"] != nil && (userMedia?[indexPath.row]["author"] as AnyObject).username != nil) {
+            let username = (userMedia![indexPath.row]["author"] as AnyObject).username!
             
             cell.captionLabel.text = ("\(username!)" + " " + "\(userMedia![indexPath.row]["caption"])")
             cell.captionLabel.delegate = self
             let str = cell.captionLabel.text! as NSString
             let stringColor = NSMutableAttributedString(string: str as String)
-            let range : NSRange = str.rangeOfString(username!)
-            stringColor.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor() , range: range)
-            let linkAttributes = [ NSForegroundColorAttributeName: UIColor.blueColor() ]
+            let range : NSRange = str.range(of: username!)
+            stringColor.addAttribute(NSForegroundColorAttributeName, value: UIColor.blue , range: range)
+            let linkAttributes = [ NSForegroundColorAttributeName: UIColor.blue ]
             cell.captionLabel.linkAttributes = linkAttributes
             
-            cell.captionLabel.addLinkToURL(NSURL(string: "http://github.com/brandon05/")!, withRange: range)
+            cell.captionLabel.addLink(to: URL(string: "http://github.com/brandon05/")!, with: range)
             
             cell.captionLabel.attributedText = stringColor
             
@@ -137,7 +137,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         
         if (userMedia?[indexPath.row]["profileImage"] != nil) {
             let userPicture = userMedia![indexPath.row]["profileImage"] as! PFFile
-            userPicture.getDataInBackgroundWithBlock({ (image: NSData?, error: NSError?) -> Void in
+            userPicture.getDataInBackground(block: { (image: Data?, error: NSError?) -> Void in
                 if let error = error {
                     print("error")
                     print(error.localizedDescription)
@@ -158,8 +158,8 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-    func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
-        performSegueWithIdentifier("profileSegue", sender: self)
+    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+        performSegue(withIdentifier: "profileSegue", sender: self)
         print("works!!")
         
     }
@@ -226,12 +226,12 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     func fetchData() {
         // construct PFQuery
         let query = PFQuery(className: "UserMedia")
-        query.orderByDescending("createdAt")
+        query.order(byDescending: "createdAt")
         query.includeKey("author")
         query.limit = 20
     
         // fetch data asynchronously
-        query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
+        query.findObjectsInBackground { (media: [PFObject]?, error: NSError?) -> Void in
         if let media = media {
             // do something with the data fetched
             self.userMedia = media
@@ -244,13 +244,9 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     // refresh delay func
-    func delay(delay:Double, closure:()->()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
+    func delay(_ delay:Double, closure:@escaping ()->()) {
+        DispatchQueue.main.asyncAfter(
+            deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
     
     // refresh func
@@ -263,15 +259,15 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let profilePic = sender as? UIButton {
             if let superview = profilePic.superview {
                 if let cell = superview.superview as? PhotoTableViewCell {
-                    let indexPath = timeline.indexPathForCell(cell)
+                    let indexPath = timeline.indexPath(for: cell)
                     
                     let userPicture = userMedia?[indexPath!.row]["media"] as! PFFile
-                    userPicture.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                    userPicture.getDataInBackground(block: { (imageData: Data?, error: NSError?) -> Void in
                         if let error = error {
                             print("error")
                             print(error.localizedDescription)
@@ -279,7 +275,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
                     
 
                     
-                    let detailView = segue.destinationViewController as! DetailImageViewController
+                    let detailView = segue.destination as! DetailImageViewController
                     let image = UIImage(data: imageData!)
                     detailView.userImage.clipsToBounds = true
                     detailView.userImage.image = image
