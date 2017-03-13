@@ -14,7 +14,6 @@ class DetailImageViewController: UIViewController {
     @IBOutlet var userImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = UIColor.flatBlueColor()
         self.backgroundImage.image = UIImage(named: "background")
         // Do any additional setup after loading the view.
     }
