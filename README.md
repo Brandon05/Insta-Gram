@@ -1,8 +1,6 @@
-# Project 6 - TheGram
+# TheGram
 
 TheGram is a photo sharing app using Parse as its backend.
-
-Time spent: 22 hours spent in total
 
 ## User Stories
 
@@ -22,9 +20,6 @@ The following **optional** features are implemented:
    - [x] Allow the logged in user to add a profile photo
    - [x] Display the profile photo with each post
    - [x] Tapping on a post's username or profile photo goes to that user's profile page
-
-The following **additional** features are implemented:
-
 - [x] Tap on username in caption to see profile
 - [x] Tap on image to view detail with blur background
 - [x] Allow profile edit
@@ -33,23 +28,13 @@ The following **additional** features are implemented:
 - [x] Gradient backgrounds
 - [x] Added ability to use filters for photos
 
-Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
-
-1. 
-2. 
-
 ## Video Walkthrough 
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough:
 
-http://imgur.com/KdeQ3pH
-<img src='http://i.imgur.com/vn8kmMI.gif?1' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/vn8kmMI.gif?1' title='Video Walkthrough' width='' alt='http://imgur.com/KdeQ3pH' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
-## Notes
-
-Describe any challenges encountered while building the app.
 
 ## License
 
